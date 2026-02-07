@@ -67,8 +67,8 @@
     /* ГЕРОЙ */
     #hero{
       position:absolute;
-      width:120px;
-      height:150px;
+      width:160px;
+      height:190px;
       background:url("https://img.genially.com/684ea2da1b51060014c50e97/d92b9a15-347b-4d73-a4a6-a94a223210a3.png") center/contain no-repeat;
       transform-origin:center center;
       transition:transform .12s ease-out;
@@ -261,6 +261,16 @@
       max-width:760px;
       font-family:"Roboto Condensed", sans-serif;
     }
+    
+    /* Полупрозрачный фон для экрана победы */
+    #gameOverOverlay{
+      background:rgba(0,0,0,0.45);
+      backdrop-filter:blur(4px);
+    }
+    #gameOverOverlay .overlay-content{
+      background:radial-gradient(circle at top, rgba(255,255,255,0.12), rgba(0,0,0,0.75));
+      backdrop-filter:blur(8px);
+    }
     .overlay-title{
       font-size:26px;
       font-weight:900;
@@ -281,21 +291,52 @@
 
     .confetti{
       position:absolute;
-      width:6px;
-      height:14px;
-      border-radius:2px;
+      width:10px;
+      height:20px;
+      border-radius:3px;
       opacity:0;
       pointer-events:none;
-      background:linear-gradient(to bottom, #fff9d6, #ffcc66);
-      animation:confetti 1.4s ease-out infinite;
+      animation:confetti 2.5s ease-out infinite;
       mix-blend-mode:screen;
-      z-index:110;
+      z-index:125;
+      box-shadow:0 0 10px rgba(255, 220, 100, 0.9);
+    }
+    .confetti:nth-child(odd){
+      background:linear-gradient(135deg, #ffeb3b, #ffc107);
+    }
+    .confetti:nth-child(even){
+      background:linear-gradient(135deg, #ff6b9d, #c44569);
+    }
+    .confetti:nth-child(3n){
+      background:linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+    .confetti:nth-child(5n){
+      background:linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+    .confetti:nth-child(7n){
+      background:linear-gradient(135deg, #fa709a, #fee140);
     }
     @keyframes confetti{
-      0%{ opacity:0; transform:translate3d(0,-40px,0) rotateZ(0deg); }
-      10%{ opacity:1; }
-      60%{ opacity:1; transform:translate3d(0,40px,0) rotateZ(180deg); }
-      100%{ opacity:0; transform:translate3d(0,60px,0) rotateZ(270deg); }
+      0%{ 
+        opacity:0; 
+        transform:translate3d(0,-80px,0) rotateZ(0deg) scale(0.3); 
+      }
+      10%{ 
+        opacity:1; 
+        transform:translate3d(0,-40px,0) rotateZ(60deg) scale(1); 
+      }
+      40%{ 
+        opacity:1; 
+        transform:translate3d(0,50px,0) rotateZ(180deg) scale(1.2); 
+      }
+      70%{ 
+        opacity:0.9; 
+        transform:translate3d(0,120px,0) rotateZ(300deg) scale(1); 
+      }
+      100%{ 
+        opacity:0; 
+        transform:translate3d(0,180px,0) rotateZ(420deg) scale(0.5); 
+      }
     }
   </style>
 </head>
@@ -359,7 +400,7 @@
     const overlaySub = document.getElementById('overlaySub');
     const btnRestart = document.getElementById('btnRestart');
 
-    const HERO_BASE_SIZE = { w: 120, h: 150 };
+    const HERO_BASE_SIZE = { w: 160, h: 190 };
     let HERO_INPUT_SPEED = 2.6;
 
     const HERO_GROWTH_PER_COLLECT = 0.05;
@@ -795,14 +836,14 @@
     }
 
     function addConfetti(){
-      const count = 60;
+      const count = 120;
       for (let i=0;i<count;i++){
         const c = document.createElement("div");
         c.className = "confetti";
-        c.style.left = rand(3,97) + "%";
-        c.style.top = rand(0,30) + "%";
-        c.style.animationDelay = (Math.random()*1.2) + "s";
-        c.style.animationDuration = (1.1 + Math.random()*0.9) + "s";
+        c.style.left = rand(5,95) + "%";
+        c.style.top = rand(-10,40) + "%";
+        c.style.animationDelay = (Math.random()*1.8) + "s";
+        c.style.animationDuration = (2 + Math.random()*1.5) + "s";
         gameEl.appendChild(c);
       }
     }
