@@ -11,8 +11,6 @@
       --hero-input-speed: 2.6;
       --bg-image: url("https://img.genially.com/684ea2da1b51060014c50e97/58c27eb0-4d8e-4a70-afc2-8797ec93e2b8.png");
       --bg-overlay: rgba(0, 0, 0, 0.0);
-
-      /* ФОН КАРТОЧКИ ЗАДАНИЯ */
       --task-card-bg: url("https://img.genially.com/684ea2da1b51060014c50e97/261b9824-4047-4748-bd1c-e7a8e23c4e0e.jpeg");
     }
 
@@ -67,22 +65,14 @@
     /* ГЕРОЙ */
     #hero{
       position:absolute;
-      width:160px;
-      height:190px;
+      width:120px;
+      height:150px;
       background:url("https://img.genially.com/684ea2da1b51060014c50e97/d92b9a15-347b-4d73-a4a6-a94a223210a3.png") center/contain no-repeat;
       transform-origin:center center;
       transition:transform .12s ease-out;
       z-index:5;
       filter:drop-shadow(0 10px 18px rgba(0,0,0,0.55));
     }
-
-    @keyframes wiggle{
-      0%,100%{ transform:translateX(0) scale(var(--hero-scale,1)); }
-      25%{ transform:translateX(-8px) rotate(-5deg) scale(var(--hero-scale,1)); }
-      50%{ transform:translateX(6px) rotate(4deg) scale(var(--hero-scale,1)); }
-      75%{ transform:translateX(-4px) rotate(-3deg) scale(var(--hero-scale,1)); }
-    }
-    .hero-wiggle{ animation:wiggle .6s ease; }
 
     .item,.candy,.bomb{
       position:absolute;
@@ -94,33 +84,16 @@
       background-position:center;
     }
 
-    /* НОРМАЛИЗАЦИЯ размеров PNG */
     .item{ width:76px; height:76px; }
     .candy{ width:66px; height:66px; }
     .bomb{ width:120px; height:120px; }
 
-    .item-type-1{
-      background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/0705afd8-e7fd-4aea-a124-1ff27d97652f.png");
-      background-size:82% 82%;
-    }
-    .item-type-2{
-      background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/33ecae6f-7ab5-4503-82c3-a561a352caf5.png");
-      background-size:78% 78%;
-    }
-    .item-type-3{
-      background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/d54e609e-53eb-48b2-95a5-c70920cf9d9d.png");
-      background-size:80% 80%;
-    }
+    .item-type-1{ background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/0705afd8-e7fd-4aea-a124-1ff27d97652f.png"); background-size:82% 82%; }
+    .item-type-2{ background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/33ecae6f-7ab5-4503-82c3-a561a352caf5.png"); background-size:78% 78%; }
+    .item-type-3{ background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/d54e609e-53eb-48b2-95a5-c70920cf9d9d.png"); background-size:80% 80%; }
 
-    .candy{
-      background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/51bf2659-82f7-4994-ac7b-fa2731245f92.png");
-      background-size:82% 82%;
-    }
-
-    .bomb{
-      background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/e197ccaf-1843-4f3b-be6e-c7796d79f369.png");
-      background-size:80% 80%;
-    }
+    .candy{ background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/51bf2659-82f7-4994-ac7b-fa2731245f92.png"); background-size:82% 82%; }
+    .bomb{ background-image:url("https://img.genially.com/684ea2da1b51060014c50e97/e197ccaf-1843-4f3b-be6e-c7796d79f369.png"); background-size:80% 80%; }
 
     .nearby{
       filter:
@@ -197,7 +170,6 @@
     }
     .modal-window > *{ position:relative; z-index:1; }
 
-    /* ✅ ТЕКСТ ЗАДАНИЯ + МОНО ДЛЯ 1 и 6 */
     .modal-question{
       font-size:22px;
       line-height:1.25;
@@ -205,7 +177,6 @@
       text-align:left;
       max-width:520px;
       color:#1e1b14;
-
       white-space: pre-wrap;
       font-variant-numeric: tabular-nums;
     }
@@ -214,10 +185,7 @@
       letter-spacing: 0;
     }
 
-    .modal-actions{
-      display:flex;
-      justify-content:center;
-    }
+    .modal-actions{ display:flex; justify-content:center; }
 
     .btn-primary{
       border:none;
@@ -304,7 +272,7 @@
       inset:0;
       width:100%;
       height:100%;
-      z-index:130;          /* поверх поздравления */
+      z-index:130;
       pointer-events:none;
       display:none;
     }
@@ -321,6 +289,7 @@
 
     <div id="hero"></div>
 
+    <!-- ✅ ФИДБЕК В НАЧАЛЕ -->
     <div id="startOverlay" class="overlay active">
       <div class="overlay-content">
         <div class="overlay-title">СОБИРАЙ ПРЕДМЕТЫ ДЛЯ ПАЙКА!</div>
@@ -343,6 +312,7 @@
       </div>
     </div>
 
+    <!-- ✅ ФИДБЕК В КОНЦЕ -->
     <div id="gameOverOverlay" class="overlay">
       <div class="overlay-content">
         <div class="overlay-title" id="overlayTitle">ПОЗДРАВЛЯЮ!</div>
@@ -351,7 +321,6 @@
       </div>
     </div>
 
-    <!-- ✅ САЛЮТ -->
     <canvas id="fireworks"></canvas>
   </div>
 
@@ -373,7 +342,7 @@
     const overlaySub = document.getElementById('overlaySub');
     const btnRestart = document.getElementById('btnRestart');
 
-    const HERO_BASE_SIZE = { w: 160, h: 190 };
+    const HERO_BASE_SIZE = { w: 120, h: 150 };
     let HERO_INPUT_SPEED = 2.6;
 
     const HERO_GROWTH_PER_COLLECT = 0.05;
@@ -404,52 +373,42 @@
     let isWin = false;
     let modalOpen = false;
 
-    /* ✅ ЗАДАНИЯ БЕЗ НОМЕРОВ */
     const TASK_CARDS = [
 `Выполните вычисления.
 
 45 * 2  = ____      80 : 5   = ____
 18 * 4  = ____      85 : 17  = ____
 96 : 3  = ____      58 : 29  = ____`,
-
 `Решите задачу.
 
 В цветочном магазине было 95 тюльпанов.
 Продавец сделал из них 12 букетов, по 7 тюльпанов в каждом букете.
 Сколько тюльпанов осталось?`,
-
 `На 7 одинаковых костюмов израсходовали 28 м ткани.
 Сколько таких костюмов можно сшить из 52 м такой же ткани?`,
-
 `Выполните вычисления.
 
 48 - 32 : 4 * 5 =
 27 : (11 - 2) * 2 =`,
-
 `Марина потратила половину имевшихся у нее денег,
 после чего у нее осталось 42 рубля.
 Сколько денег было у Марины?`,
-
 `Выполните вычисления.
 
 16 * 3  = ____      90 : 5   = ____
 49 * 2  = ____      75 : 25  = ____
 84 : 4  = ____      36 : 12  = ____`,
-
 `Решите задачу.
 
 Стекольщику надо вставить 96 стекол.
 Он уже вставил стекла в 14 окон, по 3 стекла в каждое.
 Сколько стекол ему осталось вставить?`,
-
 `На 5 одинаковых пальто расходуют 15 м ткани.
 Сколько таких пальто можно сшить из 42 м такой же ткани?`,
-
 `Выполните вычисления.
 
 32 + 8 * 5 : 4 =
 (84 - 20) : 8 * 7 =`,
-
 `Длина всех сторон шестиугольника равна.
 Его периметр 18 см.
 Чему равна длина одной его стороны?`
@@ -743,9 +702,6 @@
           b.el.style.opacity = "0";
           b.el.style.transform = "scale(0.35)";
           setTimeout(()=>b.el.remove(), 250);
-          heroEl.classList.remove("hero-wiggle");
-          void heroEl.offsetWidth;
-          heroEl.classList.add("hero-wiggle");
         }
       });
     }
@@ -755,17 +711,11 @@
     function openTaskCard(taskIndex){
       freeze(260); knockback(10);
       SFX.card();
-
       pendingCollectIndex = taskIndex;
 
-      const txt = TASK_CARDS.length
-        ? TASK_CARDS[taskIndex % TASK_CARDS.length]
-        : "Добавь задания в массив TASK_CARDS";
-
-      /* МОНОШРИФТ ТОЛЬКО ДЛЯ 1 и 6 (индексы 0 и 5) */
       modalQuestionEl.classList.toggle('mono', [0,5].includes(taskIndex));
+      modalQuestionEl.textContent = TASK_CARDS[taskIndex % TASK_CARDS.length];
 
-      modalQuestionEl.textContent = txt;
       modalOpen = true;
       taskModal.classList.add("active");
     }
@@ -774,7 +724,6 @@
       taskModal.classList.remove("active");
       modalOpen = false;
 
-      if (pendingCollectIndex === null) return;
       const id = "item-" + pendingCollectIndex;
       const item = items.find(it => it.id === id);
       if (!item || item.collected){ pendingCollectIndex = null; return; }
@@ -782,43 +731,24 @@
       item.collected = true;
       item.el.style.transform = "scale(0.1)";
       item.el.style.opacity = "0";
-      const cx = item.x + item.size/2;
-      const cy = item.y + item.size/2;
-
-      SFX.collect();
-      showGoldPop(cx, cy);
-      showFloatingScore("+10", cx, cy - 10);
       setTimeout(()=>item.el.remove(), 250);
 
-      hero.scale += HERO_GROWTH_PER_COLLECT;
-      updateHeroVisual();
-
+      SFX.collect();
       score += 10;
       foundCount++;
       updateHUD();
 
       pendingCollectIndex = null;
+
       if (foundCount >= NUM_MAIN_ITEMS){
         isWin = true;
+
         overlayTitle.textContent = "ПОЗДРАВЛЯЮ!";
         overlaySub.textContent = "Ты собрал(а) все нужные предметы для пайка!";
         gameOverOverlay.classList.add("active");
-        addConfetti();
-        SFX.win();
-        startFireworks(); /* ✅ салют */
-      }
-    }
 
-    function addConfetti(){
-      const count = 60;
-      for (let i=0;i<count;i++){
-        const c = document.createElement("div");
-        c.className = "confetti";
-        c.style.left = rand(3,97) + "%";
-        c.style.top = rand(0,30) + "%";
-        c.style.animationDelay = (Math.random()*1.2) + "s";
-        c.style.animationDuration = (1.1 + Math.random()*0.9) + "s";
-        gameEl.appendChild(c);
+        SFX.win();
+        startFireworks();
       }
     }
 
@@ -833,16 +763,17 @@
       pendingCollectIndex = null;
       freezeUntil = 0;
 
+      stopFireworks();
+      gameOverOverlay.classList.remove("active");
+
       hero.scale = 1;
       hero.x = gameEl.clientWidth/2 - HERO_BASE_SIZE.w/2;
       hero.y = gameEl.clientHeight/2 - HERO_BASE_SIZE.h/2;
       hero.flipped = false;
+
       updateHeroVisual();
-
-      document.querySelectorAll(".confetti").forEach(el => el.remove());
-      gameOverOverlay.classList.remove("active");
-
       clearObjects();
+
       pendingMain = NUM_MAIN_ITEMS;
       pendingCandies = NUM_CANDIES;
       pendingBombs = NUM_BOMBS;
@@ -895,19 +826,13 @@
 
     btnRestart.addEventListener("click", () => {
       ensureAudio();
-      stopFireworks(); /* ✅ выключаем салют при перезапуске */
       initGame();
       gameEl.focus();
-    });
-
-    window.addEventListener("resize", () => {
-      if (!startOverlay.classList.contains("active")) initGame();
     });
 
     /* ===== САЛЮТ (Fireworks) ===== */
     const fwCanvas = document.getElementById('fireworks');
     const fwCtx = fwCanvas.getContext('2d');
-
     let fwRunning = false;
     let fwRaf = null;
     let rockets = [];
@@ -934,7 +859,6 @@
         ttl: frand(40, 70)
       });
     }
-
     function explode(x,y){
       const n = Math.floor(frand(26, 44));
       for(let i=0;i<n;i++){
@@ -950,10 +874,8 @@
         });
       }
     }
-
     function fwStep(){
       if(!fwRunning) return;
-
       const w = fwCanvas.clientWidth;
       const h = fwCanvas.clientHeight;
 
@@ -997,7 +919,6 @@
       }
 
       if(Math.random() < 0.08) launchRocket();
-
       fwRaf = requestAnimationFrame(fwStep);
     }
 
@@ -1008,9 +929,7 @@
       rockets = [];
       sparks = [];
       fwRunning = true;
-
       for(let i=0;i<5;i++) setTimeout(launchRocket, i*140);
-
       if(fwRaf) cancelAnimationFrame(fwRaf);
       fwRaf = requestAnimationFrame(fwStep);
     }
