@@ -291,30 +291,30 @@
 
     .confetti{
       position:absolute;
-      width:10px;
-      height:20px;
-      border-radius:3px;
+      width:14px;
+      height:28px;
+      border-radius:4px;
       opacity:0;
       pointer-events:none;
       animation:confetti 2.5s ease-out infinite;
-      mix-blend-mode:screen;
+      mix-blend-mode:normal;
       z-index:125;
-      box-shadow:0 0 10px rgba(255, 220, 100, 0.9);
+      box-shadow:0 0 15px rgba(255, 220, 100, 1), 0 0 25px rgba(255, 200, 80, 0.6);
     }
     .confetti:nth-child(odd){
-      background:linear-gradient(135deg, #ffeb3b, #ffc107);
+      background:linear-gradient(135deg, #ffeb3b, #ff9800);
     }
     .confetti:nth-child(even){
-      background:linear-gradient(135deg, #ff6b9d, #c44569);
+      background:linear-gradient(135deg, #ff1744, #f50057);
     }
     .confetti:nth-child(3n){
-      background:linear-gradient(135deg, #4facfe, #00f2fe);
+      background:linear-gradient(135deg, #00bcd4, #2196f3);
     }
     .confetti:nth-child(5n){
-      background:linear-gradient(135deg, #43e97b, #38f9d7);
+      background:linear-gradient(135deg, #4caf50, #00e676);
     }
     .confetti:nth-child(7n){
-      background:linear-gradient(135deg, #fa709a, #fee140);
+      background:linear-gradient(135deg, #e91e63, #ffc107);
     }
     @keyframes confetti{
       0%{ 
@@ -330,7 +330,7 @@
         transform:translate3d(0,50px,0) rotateZ(180deg) scale(1.2); 
       }
       70%{ 
-        opacity:0.9; 
+        opacity:1; 
         transform:translate3d(0,120px,0) rotateZ(300deg) scale(1); 
       }
       100%{ 
@@ -836,7 +836,7 @@
     }
 
     function addConfetti(){
-      const count = 120;
+      const count = 180;
       for (let i=0;i<count;i++){
         const c = document.createElement("div");
         c.className = "confetti";
